@@ -59,27 +59,27 @@ Given the following data:
 const employees = [
   {
     eno: 101,
-    name: "Ravi",
+    name: "Raj",
     marks: [78, 82, 91],
   },
   {
     eno: 102,
-    name: "Bhanu",
+    name: "Bharat",
     marks: [65, 70, 68],
   },
   {
     eno: 103,
-    name: "Sneha",
+    name: "Sriya",
     marks: [88, 92, 95],
   },
   {
     eno: 104,
-    name: "Kiran",
+    name: "Roja",
     marks: [55, 60, 58],
   },
   {
     eno: 105,
-    name: "Anitha",
+    name: "Ananya",
     marks: [90, 85, 87],
   },
 ];
