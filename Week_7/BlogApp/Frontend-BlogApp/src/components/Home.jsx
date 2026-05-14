@@ -10,22 +10,6 @@ function Home() {
           Welcome to MyBlog
         </h1>
 
-        <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-          A modern blogging platform where users can read articles, share thoughts,
-          and engage through comments. Authors can publish and manage articles,
-          while admins manage users and platform access.
-        </p>
-
-        <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
-            Explore Articles
-          </button>
-
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">
-            Learn More
-          </button>
-
         </div>
 
         <p className="mt-8 text-xs sm:text-sm text-gray-400">
@@ -34,7 +18,7 @@ function Home() {
 
       </div>
 
-    </div>
+    
   );
 }
 
