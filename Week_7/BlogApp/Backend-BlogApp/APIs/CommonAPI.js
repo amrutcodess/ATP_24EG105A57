@@ -53,6 +53,7 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         res.status(201).json({ message: "User registered " });
 
     } catch (err) {
+        console.error("Registration error:", err.message, err);
         //delete image from cloudinary
         if (cloudinaryResult?.public_id)
             await cloudinary.uploader.destroy(cloudinaryResult.public_id)
