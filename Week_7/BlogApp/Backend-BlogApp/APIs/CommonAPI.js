@@ -1,23 +1,24 @@
 // create mini applications
 import exp from 'express'
-import {UserModel} from '../models/UserModel.js'
-import {hash,compare} from 'bcryptjs'
+import { UserModel } from '../models/UserModel.js'
+import { hash, compare } from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import { userApp } from './UserAPI.js'
 import { verifyToken } from '../middlewares/verifyToken.js'
 
 export const commonApp = exp.Router()
-import {upload} from '../config/multer.js'
-import {uploadToCloudinary} from '../config/cloudinaryUpload.js'
+import { upload } from '../config/multer.js'
+import { uploadToCloudinary } from '../config/cloudinaryUpload.js'
 import cloudinary from '../config/cloudinary.js'
 
-const {sign}=jwt
+const { sign } = jwt
 
 // Route to register
 commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next) => {
     let cloudinaryResult;
 
     try {
-        // get the details of the user - extract only needed fields
+        // get the details of the user (extract only schema fields to avoid strict:"throw" errors)
         const { firstName, lastName, email, password, role } = req.body;
         const newUser = { firstName, lastName, email, password, role };
 
@@ -32,14 +33,15 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
                 newUser.profileImageUrl = cloudinaryResult?.secure_url;
             } catch (err) {
-                console.error("Cloudinary upload error:", err.message);
                 newUser.profileImageUrl = "";
             }
         } else {
             newUser.profileImageUrl = "";
         }
 
-        // replace the password with hashed password
+        // RUN VALIDATORS MANUALLY
+
+        // replace the password eith hashed password
         newUser.password = await hash(newUser.password, 12)
 
         // create document
@@ -48,7 +50,7 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         // save document
         await userDocument.save()
 
-        // send response
+        // send respone
         res.status(201).json({ message: "User registered " });
 
     } catch (err) {
