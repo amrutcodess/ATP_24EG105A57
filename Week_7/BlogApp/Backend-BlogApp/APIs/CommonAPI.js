@@ -3,7 +3,6 @@ import exp from 'express'
 import {UserModel} from '../models/UserModel.js'
 import {hash,compare} from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { userApp } from './UserAPI.js'
 import { verifyToken } from '../middlewares/verifyToken.js'
 
 export const commonApp = exp.Router()
@@ -18,8 +17,9 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
     let cloudinaryResult;
 
     try {
-        // get tthe details of the user
-        const newUser = req.body;
+        // get the details of the user - extract only needed fields
+        const { firstName, lastName, email, password, role } = req.body;
+        const newUser = { firstName, lastName, email, password, role };
 
         // check for the roles : only author and user not admin
         let allowedRoles = ['USER', 'AUTHOR']
@@ -32,15 +32,14 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
                 newUser.profileImageUrl = cloudinaryResult?.secure_url;
             } catch (err) {
+                console.error("Cloudinary upload error:", err.message);
                 newUser.profileImageUrl = "";
             }
         } else {
             newUser.profileImageUrl = "";
         }
 
-        // RUN VALIDATORS MANUALLY
-
-        // replace the password eith hashed password
+        // replace the password with hashed password
         newUser.password = await hash(newUser.password, 12)
 
         // create document
@@ -49,7 +48,7 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         // save document
         await userDocument.save()
 
-        // send respone
+        // send response
         res.status(201).json({ message: "User registered " });
 
     } catch (err) {

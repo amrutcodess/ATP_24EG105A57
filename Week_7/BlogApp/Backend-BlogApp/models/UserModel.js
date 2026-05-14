@@ -32,7 +32,7 @@ const userSchema = new Schema({
 },{
     versionKey:false,
     timestamps:true,
-    strict:"throw"
+    strict:true
 })
 
 export const UserModel=model("user",userSchema);
