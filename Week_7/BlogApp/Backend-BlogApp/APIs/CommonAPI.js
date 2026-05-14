@@ -28,18 +28,15 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
 
         /// upload image to cloudinary from memoryStorage
         if (req.file) {
-    try {
-        const cloudinaryResult = await uploadToCloudinary(req.file.buffer);
-        newUser.profileImageUrl = cloudinaryResult?.secure_url;
-    } catch (err) {
-        newUser.profileImageUrl = "";
-    }
-} else {
-    newUser.profileImageUrl = "";
-}
-
-        // add CDN link of image to new userObj
-        newUser.profileImageUrl = cloudinaryResult?.secure_url;
+            try {
+                cloudinaryResult = await uploadToCloudinary(req.file.buffer);
+                newUser.profileImageUrl = cloudinaryResult?.secure_url;
+            } catch (err) {
+                newUser.profileImageUrl = "";
+            }
+        } else {
+            newUser.profileImageUrl = "";
+        }
 
         // RUN VALIDATORS MANUALLY
 
@@ -65,48 +62,52 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
 })
 
 // route for login
-commonApp.post('/login', async (req, res) => {
-    // get email and password from the req
-    const { email, password } = req.body;
+commonApp.post('/login', async (req, res, next) => {
+    try {
+        // get email and password from the req
+        const { email, password } = req.body;
 
-    // get user details
-    const user = await UserModel.findOne({ email: email })
-    if (!user) {
-        return res.status(400).json({ message: "Invalid email" });
+        // get user details
+        const user = await UserModel.findOne({ email: email })
+        if (!user) {
+            return res.status(400).json({ message: "Invalid email" });
+        }
+
+        // compare the password with og password
+        let isMatched = await compare(password, user.password)
+        if (!isMatched) {
+            return res.status(400).json({ message: "Incorrect password" });
+        }
+
+        // TOKEN CREATION
+        const signedToken = sign(
+            {
+                id: user._id,
+                email: user.email,
+                role: user.role,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                profileImageUrl: user.profileImageUrl
+            },
+            process.env.KEY,
+            { expiresIn: "1h" }
+        )
+
+        // set token to the cookie header 
+        res.cookie("token", signedToken, {
+            httpOnly: true,
+            sameSite: "none",
+            secure: true
+        })
+
+        // remove the password field from the user obj
+        const userObj = user.toObject();
+        delete userObj.password;
+
+        res.status(200).json({ message: "Login Successful", payload: userObj })
+    } catch (err) {
+        next(err);
     }
-
-    // compare the password with og password
-    let isMatched = await compare(password, user.password)
-    if (!isMatched) {
-        return res.status(400).json({ message: "Incorrect password" });
-    }
-
-    // TOKEN CREATION
-    const signedToken = sign(
-        {
-            id: user._id,
-            email: user.email,
-            role: user.role,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            profileImageUrl: user.profileImageUrl
-        },
-        process.env.KEY,
-        { expiresIn: "1h" }
-    )
-
-    // set token to the cookie header 
-    res.cookie("token", signedToken, {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true
-    })
-
-    // remove the password field from the user obj
-    const userObj = user.toObject();
-    delete userObj.password;
-
-    res.status(200).json({ message: "Login Successful", payload: userObj })
 })
 
 // route for logout
