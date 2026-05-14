@@ -13,7 +13,7 @@ config();
 const app = exp()
 
 app.use(cors({
-  origin: "https://blogapp-three-cyan.vercel.app",
+  origin: "https://blogapp-nine-snowy.vercel.app",
   credentials: true,
   //methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   //allowedHeaders: ["Content-Type", "Authorization"]
