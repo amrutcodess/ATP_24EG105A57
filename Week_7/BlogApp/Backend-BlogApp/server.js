@@ -12,7 +12,8 @@ import cors from "cors"
 config();
 const app = exp()
 
-const frontendOrigin = process.env.FRONTEND_URL || "https://blogapp-nine-snowy.vercel.app";
+const rawFrontendOrigin = process.env.FRONTEND_URL || "https://blogapp-nine-snowy.vercel.app";
+const frontendOrigin = rawFrontendOrigin.replace(/\/+$/, "");
 console.log("CORS origin configured:", frontendOrigin);
 app.use(cors({
   origin: frontendOrigin,
