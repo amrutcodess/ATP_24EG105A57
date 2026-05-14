@@ -12,8 +12,10 @@ import cors from "cors"
 config();
 const app = exp()
 
+const frontendOrigin = process.env.FRONTEND_URL || "https://blogapp-nine-snowy.vercel.app";
+console.log("CORS origin configured:", frontendOrigin);
 app.use(cors({
-  origin: "https://blogapp-nine-snowy.vercel.app",
+  origin: frontendOrigin,
   credentials: true,
   //methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   //allowedHeaders: ["Content-Type", "Authorization"]

@@ -82,6 +82,10 @@ commonApp.post('/login', async (req, res, next) => {
         }
 
         // TOKEN CREATION
+        if (!process.env.KEY) {
+            return res.status(500).json({ message: "Server configuration error", error: "JWT secret KEY is not set" });
+        }
+
         const signedToken = sign(
             {
                 id: user._id,
@@ -99,7 +103,7 @@ commonApp.post('/login', async (req, res, next) => {
         res.cookie("token", signedToken, {
             httpOnly: true,
             sameSite: "none",
-            secure: true
+            secure: process.env.NODE_ENV === "production"
         })
 
         // remove the password field from the user obj
@@ -108,6 +112,7 @@ commonApp.post('/login', async (req, res, next) => {
 
         res.status(200).json({ message: "Login Successful", payload: userObj })
     } catch (err) {
+        console.error("Login Error:", err);
         next(err);
     }
 })
