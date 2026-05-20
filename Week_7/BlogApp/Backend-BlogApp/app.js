@@ -12,13 +12,28 @@ import cors from "cors"
 config();
 const app = exp()
 
-const rawFrontendOrigin = process.env.FRONTEND_URL || "https://blogapp-nine-snowy.vercel.app";
-const frontendOrigin = rawFrontendOrigin.replace(/\/+$/, "");
-console.log("CORS origin configured:", frontendOrigin);
-app.use(cors({
-  origin: frontendOrigin,
+// CORS Configuration - Allow frontend origin
+const allowedOrigins = [
+  'https://blogapp-frontend-seven.vercel.app',
+  'https://blogapp-frontend-1mbei7743-amrut-s-projects2.vercel.app',
+  process.env.FRONTEND_URL || 'https://blogapp-frontend-seven.vercel.app'
+];
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Allow for preflight
+    }
+  },
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
 
 
 // connect to db
