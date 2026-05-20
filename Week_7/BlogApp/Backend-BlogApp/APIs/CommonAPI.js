@@ -5,6 +5,7 @@ import { hash, compare } from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { userApp } from './UserAPI.js'
 import { verifyToken } from '../middlewares/verifyToken.js'
+import multer from 'multer'
 
 export const commonApp = exp.Router()
 import { upload } from '../config/multer.js'
@@ -13,14 +14,37 @@ import cloudinary from '../config/cloudinary.js'
 
 const { sign } = jwt
 
+// Multer error handling middleware
+const handleMulterError = (err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    console.error("Multer error:", err.message);
+    // Continue without file if multer fails
+    return next();
+  } else if (err) {
+    console.error("File upload error:", err.message);
+    return next();
+  }
+  next();
+};
+
 // Route to register
-commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next) => {
+commonApp.post('/users', (req, res, next) => {
+  upload.single("profileImageUrl")(req, res, (err) => {
+    handleMulterError(err, req, res, () => {
+      registerUser(req, res, next);
+    });
+  });
+});
+
+async function registerUser(req, res, next) {
     let cloudinaryResult;
 
     try {
         // get the details of the user (extract only schema fields to avoid strict:"throw" errors)
         const { firstName, lastName, email, password, role } = req.body;
         
+        console.log("Registration attempt:", { firstName, lastName, email, role });
+
         // Validation
         if (!firstName || !lastName || !email || !password || !role) {
             return res.status(400).json({ message: "All fields are required" });
@@ -36,6 +60,7 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         /// upload image to cloudinary from memoryStorage
         if (req.file) {
             try {
+                console.log("Uploading file to Cloudinary");
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
                 newUser.profileImageUrl = cloudinaryResult?.secure_url;
             } catch (err) {
@@ -53,13 +78,16 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         const userDocument = new UserModel(newUser);
 
         // save document
+        console.log("Saving user to database");
         await userDocument.save()
 
         // send respone
-        res.status(201).json({ message: "User registered successfully" });
+        return res.status(201).json({ message: "User registered successfully" });
 
     } catch (err) {
-        console.error("Registration error:", err.message, err.stack);
+        console.error("Registration error:", err.message);
+        console.error("Error details:", err);
+        
         //delete image from cloudinary
         if (cloudinaryResult?.public_id) {
             try {
@@ -71,7 +99,7 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
 
         next(err);
     }
-})
+}
 
 // route for login
 commonApp.post('/login', async (req, res, next) => {
