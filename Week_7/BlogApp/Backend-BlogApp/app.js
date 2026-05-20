@@ -45,6 +45,11 @@ app.use('/author-api', authorApp);
 app.use('/admin-api', adminApp);
 app.use('/auth', commonApp);
 
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Blog API Server is running' });
+});
+
 //to handle invalid path
 app.use((req, res, next) => {
   console.log(req.url)
