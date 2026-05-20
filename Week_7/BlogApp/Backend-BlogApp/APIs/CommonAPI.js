@@ -20,6 +20,12 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
     try {
         // get the details of the user (extract only schema fields to avoid strict:"throw" errors)
         const { firstName, lastName, email, password, role } = req.body;
+        
+        // Validation
+        if (!firstName || !lastName || !email || !password || !role) {
+            return res.status(400).json({ message: "All fields are required" });
+        }
+
         const newUser = { firstName, lastName, email, password, role };
 
         // check for the roles : only author and user not admin
@@ -33,15 +39,14 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
                 newUser.profileImageUrl = cloudinaryResult?.secure_url;
             } catch (err) {
+                console.error("Cloudinary upload error:", err);
                 newUser.profileImageUrl = "";
             }
         } else {
             newUser.profileImageUrl = "";
         }
 
-        // RUN VALIDATORS MANUALLY
-
-        // replace the password eith hashed password
+        // replace the password with hashed password
         newUser.password = await hash(newUser.password, 12)
 
         // create document
@@ -51,13 +56,18 @@ commonApp.post('/users', upload.single("profileImageUrl"), async (req, res, next
         await userDocument.save()
 
         // send respone
-        res.status(201).json({ message: "User registered " });
+        res.status(201).json({ message: "User registered successfully" });
 
     } catch (err) {
-        console.error("Registration error:", err.message, err);
+        console.error("Registration error:", err.message, err.stack);
         //delete image from cloudinary
-        if (cloudinaryResult?.public_id)
-            await cloudinary.uploader.destroy(cloudinaryResult.public_id)
+        if (cloudinaryResult?.public_id) {
+            try {
+                await cloudinary.uploader.destroy(cloudinaryResult.public_id)
+            } catch (e) {
+                console.error("Cloudinary deletion error:", e);
+            }
+        }
 
         next(err);
     }
