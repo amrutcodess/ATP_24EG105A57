@@ -1,11 +1,11 @@
-# 📖 Week 6 – MERN Stack Basics & React Forms
+#  Week 6 – MERN Stack Basics & React Forms
 
 Deployment links : https://empapp-frontend.vercel.app/
 
 ## Overview
 This week focused on advancing frontend skills with React forms and transitioning into full-stack development by introducing the MERN stack (MongoDB, Express, React, Node.js). 
 
-## 📂 Repository Structure
+##  Repository Structure
 
 ```text
 Week_6/
@@ -13,7 +13,7 @@ Week_6/
 └── mern-app-emps/     # Full-stack MERN Employee Management application
 ```
 
-## 📝 Projects Breakdown
+##  Projects Breakdown
 
 ### 1. React Forms (`/react-forms`)
 A dedicated project to master form handling in React. Instead of relying purely on controlled components and standard state, we integrated `react-hook-form` to handle complex form validations seamlessly.
@@ -28,7 +28,7 @@ Our first complete MERN stack application. It bridges the gap between a React fr
   - Using `react-router` for navigating between different views (Create, Edit, List).
   - Deploying full-stack applications and handling CORS issues.
 
-## 💡 Key Learnings
+##  Key Learnings
 - **React Hook Form**: How to write cleaner form code with built-in validation and error reporting.
 - **Mongoose ORM**: Creating models, defining schemas, and executing CRUD operations directly on MongoDB from an Express server.
 - **Full-Stack Integration**: How to architect an application where a separated frontend and backend communicate securely over HTTP.
