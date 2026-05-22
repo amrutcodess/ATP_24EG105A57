@@ -1,12 +1,12 @@
-# 🚀 ATP - Week 1
+#  ATP - Week 1
 
 This folder contains the topics covered and assignment solutions from **Week 1** 
 
 ---
 
-# 📅 Day 1 – Web Fundamentals & JavaScript Basics
+# Day 1 – Web Fundamentals & JavaScript Basics
 
-## 📚 Topics Covered
+## Topics Covered
 
 1. Introduction to Web Technologies  
 2. Client-Server Architecture  
@@ -20,7 +20,7 @@ This folder contains the topics covered and assignment solutions from **Week 1**
 
 ---
 
-## 📝 Assignments – Day 1
+##  Assignments – Day 1
 
 1. Find the bigger number between two numbers  
 2. Find the biggest number among three numbers  
@@ -33,9 +33,9 @@ This folder contains the topics covered and assignment solutions from **Week 1**
 
 ---
 
-# 📅 Day 2 – Advanced JavaScript Concepts
+#  Day 2 – Advanced JavaScript Concepts
 
-## 📚 Topics Covered
+##  Topics Covered
 
 1. Deep Dive into Functions  
 2. Closures  
@@ -47,7 +47,7 @@ This folder contains the topics covered and assignment solutions from **Week 1**
 
 ---
 
-## 📝 Assignments – Day 2
+##  Assignments – Day 2
 
 1. Insert new Emp at 2nd position
 2. Remove an emp with name "Kiran"
