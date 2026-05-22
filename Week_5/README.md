@@ -1,4 +1,4 @@
-📖 Overview
+ Overview
 
 This repository contains the assignments, mini projects, and practice applications completed during Week 5 of the ATP Training Program.
 
@@ -13,7 +13,7 @@ Component-Based Architecture
 
 The projects were designed to improve practical understanding of building responsive and interactive web applications using modern frontend technologies.
 
-📂 Repository Structure
+ Repository Structure
 Week_5/
 │
 ├── Day12/
@@ -47,8 +47,8 @@ Week_5/
 │   └── React-app-2/
 │
 └── README.md
-📅 Day 12 – Responsive Design & Flexbox
-📚 Topics Covered
+ Day 12 – Responsive Design & Flexbox
+ Topics Covered
 Responsive Web Design
 Responsive Layout Principles
 Mobile-Friendly Design
@@ -58,8 +58,8 @@ Card Components
 Table Layouts
 User Interface Structuring
 CSS Styling Techniques
-📝 Projects – Day 12
-📁 Cards_Project
+ Projects – Day 12
+ Cards_Project
 
 A responsive card-based UI project demonstrating:
 
@@ -70,7 +70,7 @@ Responsive webpage structure
 Files
 index.html
 styles.css
-📁 Table1
+ Table1
 
 Implements a styled HTML table layout with:
 
@@ -80,7 +80,7 @@ Organized data presentation
 Files
 index.html
 style.css
-📁 Table2
+ Table2
 
 Responsive table design practice project focusing on:
 
@@ -90,7 +90,7 @@ Improved UI presentation
 Files
 index.html
 style.css
-📁 Users_Project
+ Users_Project
 
 User interface project for displaying:
 
@@ -100,8 +100,10 @@ Structured UI components using HTML and CSS
 Files
 index.html
 style.css
-📅 Day 13 – Tailwind CSS
-📚 Topics Covered
+
+ 
+Day 13 – Tailwind CSS
+ Topics Covered
 Tailwind CSS Fundamentals
 Utility-First CSS
 Responsive Utility Classes
@@ -111,8 +113,8 @@ Build Setup
 Tailwind installation using npm
 CSS compilation workflow
 Input and output CSS generation
-📝 Tailwind CSS Projects
-📄 tailwind-A1.html
+ Tailwind CSS Projects
+ tailwind-A1.html
 
 Basic webpage layout designed using Tailwind CSS utility classes:
 
@@ -120,14 +122,14 @@ Typography utilities
 Spacing utilities
 Layout styling
 Component structuring
-📄 tailwind-A2.html
+ tailwind-A2.html
 
 Responsive webpage implementation using:
 
 Tailwind responsive breakpoints
 Adaptive layouts
 Mobile-first design principles
-⚙️ Configuration Files
+ Configuration Files
 package.json & package-lock.json
 
 Used for:
@@ -142,8 +144,8 @@ output.css
 
 Generated CSS build file compiled from Tailwind utilities.
 
-📅 Day 14 – React Basics
-📚 Topics Covered
+ Day 14 – React Basics
+ Topics Covered
 React Fundamentals
 React Components
 JSX Syntax
@@ -154,8 +156,8 @@ Component-Based Architecture
 Functional Components
 Dynamic Rendering
 UI Composition
-📝 React Applications
-📁 React-app-1
+ React Applications
+ React-app-1
 Counter.jsx
 
 Implements:
@@ -170,7 +172,7 @@ Demonstrates:
 Reusable product components
 Props-based rendering
 Component structuring
-📁 React-app-2
+ React-app-2
 Navbar.jsx
 
 Reusable navigation bar component for application layout.
@@ -187,7 +189,7 @@ UserList.jsx
 
 Renders multiple users dynamically using reusable components and array mapping.
 
-💡 Key Learnings
+ Key Learnings
 
 During Week 5, I learned and practiced:
 
