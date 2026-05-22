@@ -8,7 +8,7 @@ ES6+ concepts
 Real-world JavaScript mini applications
 Backend fundamentals using Node.js
 API request handling and testing
-📂 Repository Structure
+ Repository Structure
 ATP-Week2/
 │
 ├── Day1/
@@ -38,8 +38,8 @@ ATP-Week2/
 │   └── server.js
 │
 └── README.md
-📅 Day 1 – JavaScript Real-World Problem Solving
-📚 Topics Covered
+ Day 1 – JavaScript Real-World Problem Solving
+Topics Covered
 JavaScript Fundamentals Revision
 Arrays & Objects
 Conditional Logic
@@ -50,7 +50,7 @@ Data Processing
 Business Logic Simulation
 Array Operations
 Object Manipulation
-📝 Assignments – Day 1
+ Assignments – Day 1
 1. shoppingCartQ1.js
 
 Implements shopping cart functionalities such as:
@@ -87,8 +87,8 @@ Analyzes banking transactions:
 Deposits and withdrawals
 Transaction calculations
 Balance analysis
-📅 Day 2 – ES6+ Concepts & Advanced JavaScript
-📚 Topics Covered
+ Day 2 – ES6+ Concepts & Advanced JavaScript
+ Topics Covered
 ES6+ Features
 Rest Parameters
 Spread Operator
@@ -100,7 +100,7 @@ Deep Copy
 Mini Simulators
 Exam Portal Simulation
 OTP Countdown Timer
-📝 Assignments – Day 2
+ Assignments – Day 2
 1. BookManagementSystemQ1.js
 
 Simulates a library management system:
@@ -153,8 +153,8 @@ Implements OTP timer functionality:
 Countdown logic
 OTP expiration simulation
 Timer handling
-📅 Day 3 – Backend Fundamentals with Node.js
-📚 Topics Covered
+ Day 3 – Backend Fundamentals with Node.js
+ Topics Covered
 Node.js Basics
 Backend Environment Setup
 Creating a Server
@@ -163,8 +163,8 @@ API Development Basics
 Route Handling
 Request & Response Processing
 API Testing using .http files
-📝 Backend Practice – Day3_Backend
-📂 Folder Structure
+ Backend Practice – Day3_Backend
+ Folder Structure
 Day3_Backend/
 ├── APIs/
 ├── node_modules/
@@ -173,7 +173,7 @@ Day3_Backend/
 ├── productReq.http
 ├── server.js
 └── userReq.http
-📄 File Descriptions
+ File Descriptions
 APIs/
 
 Directory intended for organizing:
@@ -201,7 +201,7 @@ Project configuration files responsible for:
 Dependency management
 Scripts
 Project metadata
-💡 Key Learnings
+ Key Learnings
 
 During Week 2, I improved my understanding of:
 
