@@ -1,5 +1,7 @@
 # 📖 Week 6 – MERN Stack Basics & React Forms
 
+Deployment links : https://empapp-frontend.vercel.app/
+
 ## Overview
 This week focused on advancing frontend skills with React forms and transitioning into full-stack development by introducing the MERN stack (MongoDB, Express, React, Node.js). 
 
