@@ -1,4 +1,4 @@
-📖 Overview
+ Overview
 
 This repository contains the assignments and practice exercises completed during Week 4 of the ATP Training Program.
 
@@ -12,7 +12,7 @@ Frontend layout development
 
 The assignments helped improve understanding of how webpages are structured and styled using modern HTML and CSS practices.
 
-📂 Repository Structure
+ Repository Structure
 Week_4/
 │
 ├── A1/
@@ -24,8 +24,8 @@ Week_4/
 │   └── style.css
 │
 └── README.md
-📅 HTML & CSS Fundamentals
-📚 Topics Covered
+ HTML & CSS Fundamentals
+Topics Covered
 HTML Concepts
 HTML Page Structure
 Semantic HTML Elements
@@ -38,8 +38,8 @@ Styling Techniques
 Colors & Typography
 Layout Styling
 Webpage Design Principles
-📝 Assignments & Practice
-📁 A1 – HTML Basics
+ Assignments & Practice
+ A1 – HTML Basics
 ElementsQ1.html
 
 Demonstrates the usage of commonly used HTML elements and tags, including:
@@ -63,7 +63,7 @@ Structured Content Layout
 
 This exercise improves understanding of content hierarchy and webpage organization.
 
-📁 A2 – Mini Frontend Project
+ A2 – Mini Frontend Project
 Cat.html
 
 A themed mini webpage project designed using:
@@ -83,7 +83,7 @@ Layout customization
 Typography styling
 Colors and spacing
 Overall design enhancement
-💡 Key Learnings
+ Key Learnings
 
 During Week 4, I learned and practiced:
 
