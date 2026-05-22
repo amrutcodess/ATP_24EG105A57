@@ -2,7 +2,7 @@
 
 This is a full-stack Employee Management application built using the MERN stack (MongoDB, Express, React, Node.js). It demonstrates RESTful API creation, database integration with Mongoose, and a complete React frontend with routing and state management.
 
-## 🚀 Features
+##  Features
 - **Full CRUD Operations**: Create, Read, Update, and Delete employee records.
 - **Backend API**: A modular Node.js/Express REST API.
 - **Database Integration**: Connects to MongoDB Atlas using `mongoose`, complete with schema validation (Name, Email, Mobile, Designation, Company Name).
@@ -10,11 +10,11 @@ This is a full-stack Employee Management application built using the MERN stack 
 - **Environment Variables**: Secures database URIs and deployed backend URLs using `.env` configurations.
 - **Deployment Ready**: Fully configured to be deployed on platforms like Render (Backend) and Vercel (Frontend), handling CORS and dynamic port binding.
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Frontend**: React (Vite), Tailwind CSS, React Hook Form, Axios, React Router.
 - **Backend**: Node.js, Express, MongoDB, Mongoose, CORS, Dotenv.
 
-## 📁 Project Structure
+##  Project Structure
 ```text
 mern-app-emps/
 ├── backend/
@@ -31,7 +31,7 @@ mern-app-emps/
     └── package.json
 ```
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 **Backend:**
 1. Navigate to the backend: `cd backend`
 2. Install dependencies: `npm install`
