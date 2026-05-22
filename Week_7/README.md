@@ -1,5 +1,7 @@
 # Week 7 – MERN Blog Application Capstone Project
 
+Deployment link : https://blogapp-nine-snowy.vercel.app/
+
 ## Overview
 This week focused on developing a full-stack Blog Application using the MERN stack. The project includes backend APIs, authentication, article management, frontend pages, and cloud storage integration.
 
